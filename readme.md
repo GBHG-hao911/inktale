@@ -24,7 +24,7 @@ Example of how to do this for MacOS:
 
 ```
 curl -L https://github.com/inkle/ink/releases/download/0.9.0/inklecate_mac.zip --output inklecate_mac.zip
-unzip inklecate_mac.zip
+unzip inklecate_mac.zip -d inklecate_mac
 mkdir -p /usr/local/var/inklecate
 cp inklecate_mac/* /usr/local/var/inklecate
 ln -s /usr/local/var/inklecate/inklecate /usr/local/bin

@@ -49,7 +49,7 @@ function continueStory(firstTime) {
 
     // Any special tags included with this line
     const customClasses = [];
-    const directClasses = ["send", "rec", "recv", "receive"];
+    const directClasses = [];
     for (let i = 0; i < tags.length; i++) {
       const tag = tags[i];
 

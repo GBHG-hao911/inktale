@@ -1,9 +1,14 @@
 // Fades in an element after a specified delay
 export function showAfter(delay, el) {
-  el.classList.add("hide");
+  el.classList.add('hide');
   setTimeout(function() {
-    el.classList.remove("hide");
+    el.classList.remove('hide');
   }, delay);
+}
+
+export function showAllNow() {
+  const elems = document.querySelectorAll('.hide');
+  elems.forEach(el => el.classList.remove('hide'));
 }
 
 // Scrolls the page down, but no further than the bottom edge of what you could
@@ -42,37 +47,16 @@ export function contentBottomEdgeY(container) {
 
 // Remove all elements that match the given selector. Used for removing choices after
 // you've picked one, as well as for the CLEAR and RESTART tags.
-export function removeAll(selector, container) {
+export function removeAll(selector, container = document) {
   const allElements = container.querySelectorAll(selector);
-  for (let i = 0; i < allElements.length; i++) {
-    const el = allElements[i];
-    el.parentNode.removeChild(el);
-  }
+  allElements.forEach(el => el.parentNode.removeChild(el));
 }
 
 // Used for hiding and showing the header when you CLEAR or RESTART the story respectively.
-export function setVisible(selector, visible, container) {
+export function setVisible(selector, visible, container = document) {
   const allElements = container.querySelectorAll(selector);
-  for (let i = 0; i < allElements.length; i++) {
-    const el = allElements[i];
-    if (!visible) el.classList.add("invisible");
-    else el.classList.remove("invisible");
-  }
-}
-
-// Helper for parsing out tags of the form:
-//  # PROPERTY: value
-// e.g. IMAGE: source path
-export function splitPropertyTag(tag) {
-  const propertySplitIdx = tag.indexOf(":");
-  if (propertySplitIdx != null) {
-    const property = tag.substr(0, propertySplitIdx).trim();
-    const val = tag.substr(propertySplitIdx + 1).trim();
-    return {
-      property: property,
-      val: val
-    };
-  }
-
-  return null;
+  allElements.forEach(el => {
+    if (!visible) el.classList.add('invisible');
+    else el.classList.remove('invisible');
+  });
 }

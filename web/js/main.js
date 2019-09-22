@@ -3,7 +3,7 @@ import * as utils from './utils.js';
 import * as tags from './tags.js';
 
 const storyContainer = document.querySelector('#story');
-const outerScrollContainer = document.querySelector('.outerWrapper');
+const outerScrollContainer = document.querySelector('.scrollWrapper');
 let story;
 
 function init() {

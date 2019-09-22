@@ -1,24 +1,30 @@
 /* Seems necessary to make iframes work on itch.io on mobile iOS :-( */
-.outerWrapper {
-  position: absolute;
+.scrollWrapper {
   display: block;
   margin: 0;
   padding: 0;
-  -webkit-overflow-scrolling: touch;
-  overflow: scroll;
+  overflow-y: scroll;
   height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
+  max-height: 100%;
+}
+
+.header {
+  text-align: center;
+  max-height: 15%;
+}
+
+.body {
+  height: 85%;
+  max-height: 85%;
 }
 
 .wrapper {
   display: block;
-  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   padding-top: 4em;
   background: white;
+  max-height: 100%;
 }
 
 .wrapper .hide {
@@ -37,4 +43,17 @@
 /* first choice */
 :not(.choice) + .choice {
   padding-top: 1em;
+}
+
+html,
+body,
+.container,
+.columns {
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: 100%;
+  overflow: none;
 }

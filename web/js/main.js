@@ -3,7 +3,7 @@ import * as utils from './utils.js';
 import * as tags from './tags.js';
 
 const storyContainer = document.querySelector('#story');
-const outerScrollContainer = document.querySelector('.outerContainer');
+const outerScrollContainer = document.querySelector('.outerWrapper');
 let story;
 
 function init() {
@@ -17,8 +17,6 @@ function init() {
 // Main story processing function. Each time this is called it generates
 // all the next content up as far as the next set of choices.
 function continueStory(firstTime) {
-  let paragraphIndex = 0;
-
   // Don't over-scroll past new content
   const previousBottomEdge = firstTime
     ? 0
@@ -89,10 +87,7 @@ function restart() {
 
 function choiceHandler(choice, e) {
   e.preventDefault();
-
-  // Remove all existing choices
   utils.removeAll('div.choiceContainer', storyContainer);
-
   story.ChooseChoiceIndex(choice.index);
   continueStory();
 }

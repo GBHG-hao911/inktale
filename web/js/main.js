@@ -1,6 +1,7 @@
 import storyContent from './story.js';
 import * as utils from './utils.js';
 import * as tags from './tags.js';
+import ui from './ui.js';
 
 const storyContainer = document.querySelector('#story');
 const outerScrollContainer = document.querySelector('.scrollWrapper');

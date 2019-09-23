@@ -15,14 +15,44 @@
     <div class="container">
       <div class="columns">
         <div class="col-12 header">
-          <h1>Title goes here</h1>
-          <h3 class="byline">by so and so</h3>
+          <div class="float-left">
+            <button class="btn menuBtn">Menu</button>
+          </div>
+          <div class="clearfix">
+            <h1>Title goes here</h1>
+            <h3 class="byline">by so and so</h3>
+          </div>
         </div>
         <div class="col-12 body">
           <div class="columns">
             <div class="col-3 hide-md"></div>
-            <div class="scrollWrapper col-6 col-md-12">
+            <div id="scene" class="scrollWrapper col-6 col-md-12">
               <div id="story" class="wrapper"></div>
+            </div>
+            <div class="col-6 col-md-12 text-center d-none" id="menu">
+              <ul class="menu">
+                <h2>Menu</h2>
+                <li class="menu-item">
+                  <button class="btn btn-link exitBtn">
+                    Resume
+                  </button>
+                </li>
+                <li class="menu-item">
+                  <button class="btn btn-link">Save</button>
+                </li>
+                <li class="menu-item">
+                  <button class="btn btn-link prefsBtn">Prefs</button>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6 col-md-12 text-center d-none" id="prefs">
+              <ul class="menu">
+                <h2>Preferences</h2>
+                <button class="btn btn-link backBtn">
+                  Back
+                </button>
+                <li class="menu-item">Pref 1</li>
+              </ul>
             </div>
             <div class="col-3 hide-md"></div>
           </div>

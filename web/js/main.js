@@ -1,7 +1,8 @@
 import storyContent from './story.js';
 import * as utils from './utils.js';
 import * as tags from './tags.js';
-import ui from './ui.js';
+import * as dataManager from './dataManager.js';
+import * as ui from './ui.js';
 
 const storyContainer = document.querySelector('#story');
 const outerScrollContainer = document.querySelector('.scrollWrapper');
@@ -9,10 +10,22 @@ let story;
 
 function init() {
   story = new inkjs.Story(storyContent);
-  tags.parse(story.globalTags || []);
-
+  const tagResults = tags.parse(story.globalTags || []);
+  let firstTime = true;
+  if (tagResults.title) {
+    //having a title means we can enable saves!
+    const hasAutoSave = dataManager.init(tagResults.title);
+    dataManager.setStoryRef(story);
+    if (hasAutoSave) {
+      dataManager.load();
+      const data = dataManager.getData();
+      story.state.LoadJson(data.state);
+      firstTime = false;
+    }
+  }
+  ui.init();
   // Kick off the start of the story!
-  continueStory(true);
+  continueStory(firstTime);
 }
 
 // Main story processing function. Each time this is called it generates
@@ -33,8 +46,6 @@ function continueStory(firstTime) {
     if (tagResults.restart) {
       return restart();
     }
-
-    //add classes
 
     // Create paragraph element (initially hidden)
     const paragraphElement = document.createElement('p');

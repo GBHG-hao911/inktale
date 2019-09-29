@@ -18,9 +18,9 @@
           <div class="float-left">
             <button class="btn menuBtn">Menu</button>
           </div>
-          <div class="clearfix">
-            <h1>Title goes here</h1>
-            <h3 class="byline">by so and so</h3>
+          <div class="clearfix text-center">
+            <h1 class="title">Title goes here</h1>
+            <span class="byline">by so and so</span>
           </div>
         </div>
         <div class="col-12 body">
@@ -31,6 +31,7 @@
             </div>
             <div class="col-6 col-md-12 text-center d-none" id="menu">
               <ul class="menu">
+                <span class="notify"></span>
                 <h2>Menu</h2>
                 <li class="menu-item">
                   <button class="btn btn-link exitBtn">
@@ -38,7 +39,7 @@
                   </button>
                 </li>
                 <li class="menu-item">
-                  <button class="btn btn-link">Save</button>
+                  <button class="btn btn-link saveBtn">Save</button>
                 </li>
                 <li class="menu-item">
                   <button class="btn btn-link prefsBtn">Prefs</button>
@@ -46,13 +47,42 @@
               </ul>
             </div>
             <div class="col-6 col-md-12 text-center d-none" id="prefs">
-              <ul class="menu">
-                <h2>Preferences</h2>
-                <button class="btn btn-link backBtn">
-                  Back
-                </button>
-                <li class="menu-item">Pref 1</li>
-              </ul>
+              <form id="preferencesForm">
+                <ul class="menu">
+                  <h2>Preferences</h2>
+                  <span class="notify"></span>
+                  <li class="menu-item">
+                    <div class="form-group">
+                      <label class="form-radio form-inline">
+                        <input type="radio" name="delay" value="slow" /><i
+                          class="form-icon"
+                        ></i>
+                        Slow
+                      </label>
+                      <label class="form-radio form-inline">
+                        <input
+                          type="radio"
+                          name="delay"
+                          checked=""
+                          value="normal"
+                        /><i class="form-icon"></i>
+                        Normal
+                      </label>
+                      <label class="form-radio form-inline">
+                        <input type="radio" name="delay" value="fast" /><i
+                          class="form-icon"
+                        ></i>
+                        Fast
+                      </label>
+                    </div>
+                  </li>
+                  <li class="menu-item">
+                    <button class="btn btn-link backBtn">
+                      Back
+                    </button>
+                  </li>
+                </ul>
+              </form>
             </div>
             <div class="col-3 hide-md"></div>
           </div>

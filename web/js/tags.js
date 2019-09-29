@@ -1,10 +1,16 @@
 import * as utils from './utils.js';
 
 const tagHandlers = {
-  title: () => {
+  author: () => {
     const byline = document.querySelector('.byline');
     if (byline) {
-      byline.innerHTML = 'by ' + splitTag.val;
+      byline.innerText = 'by ' + splitTag.val;
+    }
+  },
+  title: () => {
+    const titleLine = document.querySelector('.title');
+    if (titleLine) {
+      title.innerText = splitTag.val;
     }
   },
   theme: () => {
@@ -12,15 +18,33 @@ const tagHandlers = {
   },
 };
 
+function splitTags(tag) {
+  const separatorIndex = tag.indexOf(':');
+  if (separatorIndex === -1) return;
+
+  const value = tag.substr(0, separatorIndex).trim();
+  const key = tag
+    .substr(separatorIndex + 1)
+    .trim()
+    .toLowerCase();
+
+  if (!key || !value) return;
+  return {
+    key,
+    value,
+  };
+}
+
 export function parse(tags = []) {
   const classesToAdd = [];
   const elementsToInsert = [];
   let restart = false;
+  let title = 'Untitled';
 
   tags.forEach(tag => {
-    const split = split(tag);
+    const split = splitTags(tag);
     if (split && tagHandlers[split.key]) {
-      return tagHandlers[split.key](split.value);
+      tagHandlers[split.key](split.value);
     }
 
     if (split) {
@@ -34,6 +58,8 @@ export function parse(tags = []) {
           imageElement.src = splitTag.val;
           elementsToInsert.push(imageElement);
           break;
+        case 'title':
+          title = split.value;
       }
     }
 
@@ -53,22 +79,6 @@ export function parse(tags = []) {
     classesToAdd,
     elementsToInsert,
     restart,
-  };
-}
-
-function split(tag) {
-  const separatorIndex = tag.indexOf(':');
-  if (separatorIndex === -1) return;
-
-  const value = tag.substr(0, separatorIndex).trim();
-  const key = tag
-    .substr(separatorIndex + 1)
-    .trim()
-    .toLower();
-
-  if (!key || !value) return;
-  return {
-    key,
-    value,
+    title,
   };
 }

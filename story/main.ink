@@ -41,6 +41,8 @@ VAR throwncomponentaway = false
 VAR piecereturned = false
 VAR longgrasshooperframe = false
 
+# TITLE:Example Story
+# Author:Inkle Staff
 
 // DEBUG mode adds a few shortcuts - remember to set to false in release!
 VAR DEBUG = false

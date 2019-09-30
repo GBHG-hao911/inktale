@@ -21,7 +21,6 @@
   display: block;
   margin: 0 auto;
   padding: 20px;
-  padding-top: 4em;
   background: white;
   max-height: 100%;
 }
@@ -46,6 +45,21 @@
 
 .menu {
   font-size: 2em;
+}
+
+.menuBtn {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.titleline {
+  display: inline;
+}
+
+.menu span,
+.menu label,
+.menu p {
+  font-size: 0.5em;
 }
 
 html,

@@ -4,6 +4,7 @@ const panels = {
   menu: document.getElementById('menu'),
   scene: document.getElementById('scene'),
   prefs: document.getElementById('prefs'),
+  etc: document.getElementById('etc'),
 };
 
 let lastActivePanel = 'scene';
@@ -29,6 +30,13 @@ function toggleMenu() {
     return makePanelActive('scene');
   }
   makePanelActive('menu');
+}
+
+function toggleEtc() {
+  if (activePanel !== 'etc') {
+    return makePanelActive('etc');
+  }
+  makePanelActive(lastActivePanel);
 }
 
 function togglePrefs() {
@@ -106,6 +114,9 @@ document
 document
   .querySelectorAll('.prefsBtn')
   .forEach(el => el.addEventListener('click', togglePrefs));
+document
+  .querySelectorAll('.etcBtn')
+  .forEach(el => el.addEventListener('click', toggleEtc));
 document
   .querySelectorAll('.backBtn')
   .forEach(el => el.addEventListener('click', backToLastActivePanel));

@@ -21,6 +21,9 @@ function init() {
       const data = dataManager.getData();
       story.state.LoadJson(data.state);
       firstTime = false;
+      const paragraphElement = document.createElement('p');
+      paragraphElement.innerText = '<save automatically loaded>';
+      addElements([paragraphElement]);
     }
   }
   ui.init();
@@ -106,6 +109,8 @@ function choiceHandler(choice, e) {
 
 function addElements(elems) {
   let delay = 0;
+  dataManager.getPref('delay');
+
   const itemDelay = 200; //@TODO update to be a dynamic pref
   elems.forEach(elem => {
     elem.classList.add('scene');

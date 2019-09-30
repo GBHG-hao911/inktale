@@ -8,6 +8,12 @@ const defaultPrefs = {
   delay: 'normal',
 };
 
+const delayTransform = {
+  slow: 300,
+  normal: 200,
+  fast: 100,
+};
+
 const defaultIndex = {
   saves: [],
 };
@@ -121,6 +127,9 @@ export function setPref(pref, value) {
 }
 
 export function getPref(pref) {
+  if (pref === 'delay') {
+    return delayTransform[data.prefs.delay] || 200;
+  }
   return data.prefs[pref];
 }
 

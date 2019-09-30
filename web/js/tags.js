@@ -1,20 +1,18 @@
 import * as utils from './utils.js';
 
 const tagHandlers = {
-  author: () => {
-    const byline = document.querySelector('.byline');
-    if (byline) {
-      byline.innerText = 'by ' + splitTag.val;
-    }
+  author: value => {
+    const byline = document.querySelectorAll('.byline');
+    byline.forEach(el => (el.innerText = value));
   },
-  title: () => {
-    const titleLine = document.querySelector('.title');
-    if (titleLine) {
-      title.innerText = splitTag.val;
-    }
+  title: value => {
+    const titleline = document.querySelectorAll('.titleline');
+    titleline.forEach(el => (el.innerText = value));
+    const pageTitle = document.querySelector('title');
+    pageTitle.innerText = value;
   },
-  theme: () => {
-    document.body.classList.add(splitTag.val);
+  theme: value => {
+    document.body.classList.add(value);
   },
 };
 
@@ -22,11 +20,11 @@ function splitTags(tag) {
   const separatorIndex = tag.indexOf(':');
   if (separatorIndex === -1) return;
 
-  const value = tag.substr(0, separatorIndex).trim();
   const key = tag
-    .substr(separatorIndex + 1)
-    .trim()
-    .toLowerCase();
+    .substr(0, separatorIndex)
+    .toLowerCase()
+    .trim();
+  const value = tag.substr(separatorIndex + 1).trim();
 
   if (!key || !value) return;
   return {
@@ -43,6 +41,7 @@ export function parse(tags = []) {
 
   tags.forEach(tag => {
     const split = splitTags(tag);
+    console.log(split, tag);
     if (split && tagHandlers[split.key]) {
       tagHandlers[split.key](split.value);
     }
@@ -71,7 +70,7 @@ export function parse(tags = []) {
         utils.removeAll('.scene');
         break;
       default:
-        classesToAdd.push(tag.trim());
+      //classesToAdd.push(tag.trim());
     }
   });
 

@@ -24,7 +24,7 @@ export let data = {
 };
 
 export function init(gameName = 'unnamed_game') {
-  GAME_SLUG = gameName.replace(/\w/g, '_').toLowerCase();
+  GAME_SLUG = gameName.replace(/\s/g, '_').toLowerCase();
   const index = getIndex();
   let hasAutoSave = false;
   index.saves.forEach(save => {
